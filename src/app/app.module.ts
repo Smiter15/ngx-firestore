@@ -1,16 +1,67 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
+// Angular Firebase
+import { AngularFireModule } from "@angular/fire";
+import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFirestoreModule } from "@angular/fire/firestore";
+import { AngularFireStorageModule } from "@angular/fire/storage";
+
+// Bootstrap
+import { AlertModule } from "ngx-bootstrap";
+
+// Components
 import { AppComponent } from './app.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ChatComponent } from './chat/chat.component';
+import { ChatInputComponent } from './chat/components/chat-input/chat-input.component';
+import { ChatroomListComponent } from './chat/components/chatroom-list/chatroom-list.component';
+import { ChatroomTitleBarComponent } from './chat/components/chatroom-title-bar/chatroom-title-bar.component';
+import { ChatMessageComponent } from './chat/components/chat-message/chat-message.component';
+import { ChatroomWindowComponent } from './chat/components/chatroom-window/chatroom-window.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
+
+// Routes
+import { AppRoutingModule } from './app-routing.module';
+
+import { environment } from "../environments/environment";
+
+import { NgxLoadingModule } from "ngx-loading";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        AngularFirestoreModule.enablePersistence(),
+        AngularFireStorageModule,
+        AlertModule.forRoot(),
+        AppRoutingModule,
+        NgxLoadingModule
+    ],
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        ForgotPasswordComponent,
+        RegisterComponent,
+        UserProfileComponent,
+        ChatComponent,
+        NavbarComponent,
+        ChatInputComponent,
+        ChatroomListComponent,
+        ChatroomTitleBarComponent,
+        ChatMessageComponent,
+        ChatroomWindowComponent,
+        UserProfileEditComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

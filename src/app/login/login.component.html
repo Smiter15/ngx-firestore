@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="container-wrapper container d-flex justify-content-center align-items-center">
+    <div class="form-wrapper text-center">
+        <h2 class="text-center">Login</h2>
+        <form [formGroup]="loginForm" (submit)="submitLogin()" novalidate>
+            <div class="form-group">
+                <input type="email" class="form-control" id="email-input" placeholder="Enter email" formControlName="email" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" id="password-input" placeholder="Enter password" formControlName="password" />
+            </div>
+            <button type="button" class="btn btn-primary" (click)="submitLogin()">Submit</button>
+        </form>
+        <small><a routerLink="/register">Need an account?</a></small>
+        <hr />
+        <button (click)="signInWithFacebook()" class="btn btn-facebook">
+            <i class="fa fa-facebook fa-lg"></i> Login with Facebook
+        </button>
+    </div>
+</div>
+
+<h1>Notes</h1>
+
+<div *ngFor="let note of notes | async">
+    <h3>{{note.content}}</h3>
+</div>
+
+<h3>{{note | async | json}}</h3>
+
+<input [(ngModel)]="newContent" />
+<button (click)="updateContent()">Update</button>

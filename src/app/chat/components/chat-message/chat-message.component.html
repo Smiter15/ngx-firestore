@@ -1,0 +1,13 @@
+<div class="chat-message d-flex">
+    <div class="image-wrapper" [routerLink]="'/profile/' + message.sender.uid">
+        <img [src]="message.sender.photoURL" class="rounded-circle" />
+    </div>
+    <div class="bubble d-flex flex-column">
+        <div class="d-flex align-items-baseline">
+            <span class="name">{{message.sender.displayName}}</span><span class="timestamp">{{message.createdAt.toDate() | date: 'medium'}}</span>
+        </div>
+        <div class="message">
+            {{message.message}}
+        </div>
+    </div>
+</div>

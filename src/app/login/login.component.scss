@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+
+h2 {
+    color: $secondary;
+    margin-bottom: 1em;
+}
+
+.form-wrapper {
+    min-width: 40%;
+    margin-bottom: 10%;
+    border: 2px solid $light-grey;
+    padding: 1em 2em;
+    .btn-facebook {
+        background: #4267b2;
+        color: white;
+        height: 40px;
+        text-align: center;
+        &:hover {
+            cursor: pointer;
+            background: #16377b;
+        }
+    }
+}
