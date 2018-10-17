@@ -9,7 +9,7 @@
             <div class="form-group">
                 <input type="password" class="form-control" id="password-input" placeholder="Enter password" formControlName="password" />
             </div>
-            <button type="button" class="btn btn-primary" (click)="submitLogin()">Submit</button>
+            <button type="button" mat-raised-button (click)="submitLogin()" color="primary">Submit</button>
         </form>
         <small><a routerLink="/register">Need an account?</a></small>
         <hr />

@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Material
+import { MaterialModule } from './material.module';
 
 // Angular Firebase
 import { AngularFireModule } from "@angular/fire";
@@ -38,13 +42,15 @@ import { NgxLoadingModule } from "ngx-loading";
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
+        MaterialModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireAuthModule,
         AngularFirestoreModule.enablePersistence(),
         AngularFireStorageModule,
         AlertModule.forRoot(),
         AppRoutingModule,
-        NgxLoadingModule
+        NgxLoadingModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
