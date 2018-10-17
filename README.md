@@ -3,6 +3,7 @@
 This project is built with Angular 6 + firebase 5 using firestore.
 Working authentication, chat application, user profiles and user presence.
 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 
 ## Development server
