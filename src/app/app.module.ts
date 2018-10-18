@@ -17,15 +17,19 @@ import { AlertModule } from "ngx-bootstrap";
 
 // Components
 import { AppComponent } from './app.component';
+
+import { HomeComponent } from './home/home.component';
+
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+
 import { ChatComponent } from './chat/chat.component';
 import { ChatInputComponent } from './chat/components/chat-input/chat-input.component';
 import { ChatroomListComponent } from './chat/components/chatroom-list/chatroom-list.component';
 import { ChatroomTitleBarComponent } from './chat/components/chatroom-title-bar/chatroom-title-bar.component';
 import { ChatMessageComponent } from './chat/components/chat-message/chat-message.component';
 import { ChatroomWindowComponent } from './chat/components/chatroom-window/chatroom-window.component';
+
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserProfileEditComponent } from './user-profile-edit/user-profile-edit.component';
 
@@ -54,7 +58,6 @@ import { NgxLoadingModule } from "ngx-loading";
     declarations: [
         AppComponent,
         LoginComponent,
-        ForgotPasswordComponent,
         RegisterComponent,
         UserProfileComponent,
         ChatComponent,
@@ -63,7 +66,8 @@ import { NgxLoadingModule } from "ngx-loading";
         ChatroomTitleBarComponent,
         ChatMessageComponent,
         ChatroomWindowComponent,
-        UserProfileEditComponent
+        UserProfileEditComponent,
+        HomeComponent
     ],
     providers: [],
     bootstrap: [AppComponent]

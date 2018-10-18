@@ -9,7 +9,7 @@ import { IsOwnerGuard } from "./_guards/is-owner.guard";
 // Components
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from "./register/register.component";
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { HomeComponent } from "./home/home.component";
 import { ChatComponent } from "./chat/chat.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { UserProfileEditComponent } from "./user-profile-edit/user-profile-edit.component";
@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: '/login', canActivate: [AlwaysAuthGuard] },
     { path: 'login', component: LoginComponent, canActivate: [AlwaysAuthGuard] },
     { path: 'register', component: RegisterComponent, canActivate: [AlwaysAuthGuard] },
-    { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [AlwaysAuthGuard] },
+    { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'chat', canActivate: [AuthGuard],
         children: [
             { path: '', component: ChatComponent },

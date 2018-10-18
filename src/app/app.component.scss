@@ -1,4 +1,5 @@
 @import '../styles/variables';
+@import '../styles/animations';
 
 .alert-wrapper {
     position: relative;
@@ -10,11 +11,7 @@
     }
 }
 
-.page-wrap {
-    background: #eaeaea;
-}
-
-.content {
+.mat-drawer-container {
     background: #eaeaea;
 }
 
@@ -22,6 +19,85 @@
     background: darkorange;
 }
 
-footer {
-    height: 120px;
+mat-sidenav {
+    width: 300px;
+    background: #eaeaea;
+    @media only screen and (max-width: 600px) {
+        width: 200px;
+    }
+}
+
+mat-list {
+    a {
+        text-decoration: none;
+    }
+    i {
+        float: right;
+        margin-top: 10px;
+        margin-right: 15px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    mat-list-item {
+        padding: 8px 0 8px 30px;
+        @media only screen and (max-width: 600px) {
+            padding: 8px 0 8px 0;
+        }
+        &.mt-30 {
+            margin-top: 30px;
+        }
+        &.mt-60 {
+            margin-top: 60px;
+        }
+        &.active {
+            color: white;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+        &:focus {
+            outline: none;
+        }
+        i {
+            &.material-icons {
+                position: relative;
+                top: -6px;
+            }
+        }
+        &.profile {
+            img {
+                padding-left: 0;
+                border-radius: 50%;
+                width: 50px;
+                margin-top: 0;
+                margin-right: 15px;
+            }
+            p {
+                margin-bottom: 0;
+                margin-top: 5px;
+                line-height: 1.5;
+            }
+            i {
+                font-size: 14px;
+                margin-top: 4px;
+                @include allTransition(500ms);
+            }
+            &:hover {
+                i {
+                    color: $black;
+                    margin-left: 10px;
+                }
+            }
+        }
+        &.sign-out {
+            position: absolute;
+            bottom: 15px;
+            width: 100%;
+            i {
+                font-size: 26px;
+                margin-top: 8px;
+            }
+        }
+    }
 }

@@ -2,16 +2,14 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable, Subscription } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
 
 import { AuthService } from "../_services/auth.service"
 import { AlertService } from "../_services/alert.service";
 import { LoadingService } from "../_services/loading.service";
 
 import { AlertType } from "../_enums/alert-type.enum";
-
-import { Note } from "../_interfaces/note.interface";
 
 @Component({
     selector: 'app-login',
@@ -24,13 +22,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription[] = [];
     private returnUrl: string;
 
-    notesCollection: AngularFirestoreCollection<Note>;
-    noteDocument: AngularFirestoreDocument<Note>;
-    notes: Observable<Note[]>;
-    note: Observable<Note>;
-
-    newContent: string;
-
     constructor(private fb: FormBuilder,
                 private afs: AngularFirestore,
                 public auth: AuthService,
@@ -42,12 +33,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/chat';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
 
         this.subscriptions.push(
             this.auth.currentUser.subscribe(user => {
                 if (!!user) {
-                    this.router.navigateByUrl('/chat');
+                    this.router.navigateByUrl('/home');
                 }
             })
         );
@@ -92,7 +83,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     private afterSignIn() {
         // Do after login stuff here, such router redirects, toast messages, etc.
-        return this.router.navigate(['/chat']);
+        return this.router.navigate(['/home']);
     }
 
 }

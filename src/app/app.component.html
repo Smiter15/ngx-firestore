@@ -1,53 +1,59 @@
 <mat-sidenav-container class="all-wrap" fullscreen>
-    <mat-sidenav #sidenav>
+    <mat-sidenav #sidenavLeft>
         <mat-list>
-            <i class="material-icons" (click)="sidenav.close()">close</i>
-            <mat-list-item [routerLink]="'/profile/' + auth.currentUserSnapshot?.uid" routerLinkActive="active" (click)="sidenav.close()">
-                <i class="icon-dashboard"></i> Profile
+            <i class="material-icons" (click)="sidenavLeft.close()">close</i>
+            <mat-list-item class="mt-60" routerLink="/home" (click)="sidenavLeft.close()">
+                <i class="material-icons">home</i> Home
             </mat-list-item>
-            <mat-list-item (click)="sidenav.close(); auth.signOut()">
-                <i class="icon-details"></i> Logout
+            <mat-list-item class="mt-30 profile" [routerLink]="'/profile/' + appUser?.uid" (click)="sidenavLeft.close()">
+                <img [src]="appUser?.photoURL" />
+                <p><span>{{appUser?.displayName}}</span><br />
+                    Profile <i class="icon-chevron-right"></i></p>
+            </mat-list-item>
+            <mat-list-item class="sign-out" (click)="sidenavLeft.close(); auth.signOut()">
+                <i class="icon-sign-out"></i> Logout
             </mat-list-item>
         </mat-list>
     </mat-sidenav>
 
-    <div class="page-wrap">
-        <header role="banner">
-            <mat-toolbar>
-                <div class="container">
-                    <button
-                        *ngIf="auth.currentUser | async"
-                        type="button"
-                        mat-icon-button
-                        (click)="sidenav.open()"
-                        title="Open sidenav"
-                        class="float-left">
-                        <i class="material-icons">menu</i>
-                    </button>
-                    <button
-                        *ngIf="auth.currentUser | async"
-                        mat-icon-button
-                        routerLink="/chat"
-                        type="button"
-                        class="float-right">
-                        <i class="material-icons">chat_bubble</i>
-                    </button>
-                </div>
-            </mat-toolbar>
-        </header>
-        <main class="content">
-            <ngx-loading [show]="loading"></ngx-loading>
-            <div class="alert-wrapper">
-                <alert *ngFor="let alert of alerts" [type]="alert.type" dismissOnTimeout="5000" class="text-center">
-                    {{alert.text}}
-                </alert>
-            </div>
-            <router-outlet></router-outlet>
-        </main>
-        <footer>
-            <div class="container">
+    <mat-sidenav #sidenavRight position="end">
+        <mat-list>
+            <i class="material-icons" (click)="sidenavRight.close()">close</i>
+            <p>Put chat here</p>
+        </mat-list>
+    </mat-sidenav>
 
+    <header role="banner">
+        <mat-toolbar class="mat-elevation-z6">
+            <div class="container">
+                <button
+                    *ngIf="auth.currentUser | async"
+                    mat-icon-button
+                    (click)="sidenavLeft.open()"
+                    type="button"
+                    title="Open menu"
+                    class="float-left">
+                    <i class="material-icons">menu</i>
+                </button>
+                <button
+                    *ngIf="auth.currentUser | async"
+                    mat-icon-button
+                    (click)="sidenavRight.open()"
+                    type="button"
+                    title="Open chat"
+                    class="float-right">
+                    <i class="material-icons">chat_bubble</i>
+                </button>
             </div>
-        </footer>
-    </div>
+        </mat-toolbar>
+    </header>
+    <main>
+        <ngx-loading [show]="loading"></ngx-loading>
+        <div class="alert-wrapper">
+            <alert *ngFor="let alert of alerts" [type]="alert.type" dismissOnTimeout="5000" class="text-center">
+                {{alert.text}}
+            </alert>
+        </div>
+        <router-outlet></router-outlet>
+    </main>
 </mat-sidenav-container>

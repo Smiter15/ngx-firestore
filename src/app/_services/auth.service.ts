@@ -13,7 +13,6 @@ import { fromPromise } from "rxjs/internal/observable/fromPromise";
 
 import { AlertService } from "./alert.service";
 
-import { Role } from "../_interfaces/role.interface";
 import { User } from "../_interfaces/user.interface";
 
 import { AlertType } from "../_enums/alert-type.enum";
@@ -25,8 +24,6 @@ export class AuthService {
 
     currentUser: Observable<User | null>;
     currentUserSnapshot: User | null;
-
-    private displayName: string;
 
     constructor(
         private afAuth: AngularFireAuth,
@@ -165,12 +162,12 @@ export class AuthService {
                 snapshot.docChanges().forEach(function(change) {
                     if (change.type === 'added') {
                         const msg = 'User ' + change.doc.id + ' is online.';
-                        console.log(msg);
+                        //console.log(msg);
                         // ...
                     }
                     if (change.type === 'removed') {
                         const msg = 'User ' + change.doc.id + ' is offline.';
-                        console.log(msg);
+                        //console.log(msg);
                         // ...
                     }
                 });

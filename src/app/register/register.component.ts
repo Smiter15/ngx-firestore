@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
                 this.loadingService.setLoading(false);
                 if (success !== false) {
                     console.log('register sucess', success);
-                    this.router.navigate(['/chat']);
+                    this.router.navigate(['/home']);
                 }
             }, err => {
                 console.log(err);

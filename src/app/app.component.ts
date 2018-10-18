@@ -21,11 +21,19 @@ export class AppComponent implements OnInit, OnDestroy{
     private subscriptions: Subscription[] = [];
     public loading: boolean;
 
+    appUser: any;
+
     constructor(private auth: AuthService,
                 private alertService: AlertService,
                 private loadingService: LoadingService) { }
 
     ngOnInit() {
+        this.subscriptions.push(
+            this.auth.currentUser.subscribe(user => {
+                this.appUser = user;
+            })
+        );
+
         this.subscriptions.push(
             this.alertService.getAlert().subscribe(alert => {
                 this.alerts.push(alert);

@@ -1,0 +1,36 @@
+@mixin rotate($degree) {
+    transform:rotate($degree);
+    -ms-transform:rotate($degree); /* IE 9 */
+    -webkit-transform:rotate($degree); /* Safari and Chrome */
+}
+
+@mixin opacity ($opacity: 0.5) {
+    -webkit-opacity:  $opacity;
+    -moz-opacity:  $opacity;
+    opacity:  $opacity;
+}
+
+@mixin transition($name) {
+    -webkit-transition: $name .30s ease-in-out;
+    -moz-transition: $name .30s ease-in-out;
+    -ms-transition: $name .30s ease-in-out;
+    -o-transition: $name .30s ease-in-out;
+    transition: $name .30s ease-in-out;
+}
+
+@mixin allTransition($time) {
+    -webkit-transition: all $time linear;
+    -o-transition: all $time linear;
+    -moz-transition: all $time linear;
+    -ms-transition: all $time linear;
+    -kthtml-transition: all $time linear;
+    transition: all $time linear;
+}
+
+@mixin fastTransition($name) {
+    -webkit-transition: $name .10s ease-in-out;
+    -moz-transition: $name .10s ease-in-out;
+    -ms-transition: $name .10s ease-in-out;
+    -o-transition: $name .10s ease-in-out;
+    transition: $name .10s ease-in-out;
+}
