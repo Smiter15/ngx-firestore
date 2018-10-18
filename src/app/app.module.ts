@@ -20,7 +20,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { NavbarComponent } from './navbar/navbar.component';
 import { ChatComponent } from './chat/chat.component';
 import { ChatInputComponent } from './chat/components/chat-input/chat-input.component';
 import { ChatroomListComponent } from './chat/components/chatroom-list/chatroom-list.component';
@@ -59,7 +58,6 @@ import { NgxLoadingModule } from "ngx-loading";
         RegisterComponent,
         UserProfileComponent,
         ChatComponent,
-        NavbarComponent,
         ChatInputComponent,
         ChatroomListComponent,
         ChatroomTitleBarComponent,

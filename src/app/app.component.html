@@ -1,9 +1,53 @@
-<main>
-    <ngx-loading [show]="loading"></ngx-loading>
-    <div class="alert-wrapper">
-        <alert *ngFor="let alert of alerts" [type]="alert.type" dismissOnTimeout="5000" class="text-center">
-            {{alert.text}}
-        </alert>
+<mat-sidenav-container class="all-wrap" fullscreen>
+    <mat-sidenav #sidenav>
+        <mat-list>
+            <i class="material-icons" (click)="sidenav.close()">close</i>
+            <mat-list-item [routerLink]="'/profile/' + auth.currentUserSnapshot?.uid" routerLinkActive="active" (click)="sidenav.close()">
+                <i class="icon-dashboard"></i> Profile
+            </mat-list-item>
+            <mat-list-item (click)="sidenav.close(); auth.signOut()">
+                <i class="icon-details"></i> Logout
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+
+    <div class="page-wrap">
+        <header role="banner">
+            <mat-toolbar>
+                <div class="container">
+                    <button
+                        *ngIf="auth.currentUser | async"
+                        type="button"
+                        mat-icon-button
+                        (click)="sidenav.open()"
+                        title="Open sidenav"
+                        class="float-left">
+                        <i class="material-icons">menu</i>
+                    </button>
+                    <button
+                        *ngIf="auth.currentUser | async"
+                        mat-icon-button
+                        [routerLink]="'/chat'"
+                        type="button"
+                        class="float-right">
+                        <i class="material-icons">chat_bubble</i>
+                    </button>
+                </div>
+            </mat-toolbar>
+        </header>
+        <main class="content">
+            <ngx-loading [show]="loading"></ngx-loading>
+            <div class="alert-wrapper">
+                <alert *ngFor="let alert of alerts" [type]="alert.type" dismissOnTimeout="5000" class="text-center">
+                    {{alert.text}}
+                </alert>
+            </div>
+            <router-outlet></router-outlet>
+        </main>
+        <footer>
+            <div class="container">
+
+            </div>
+        </footer>
     </div>
-    <router-outlet></router-outlet>
-</main>
+</mat-sidenav-container>
