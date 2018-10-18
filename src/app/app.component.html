@@ -18,8 +18,12 @@
 
     <mat-sidenav #sidenavRight position="end">
         <mat-list>
-            <i class="material-icons" (click)="sidenavRight.close()">close</i>
-            <p>Put chat here</p>
+            <div class="row">
+                <div class="col-12">
+                    <i class="material-icons" (click)="sidenavRight.close()">close</i>
+                </div>
+            </div>
+            <app-chat></app-chat>
         </mat-list>
     </mat-sidenav>
 
