@@ -38,8 +38,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
         this.registerForm = this.fb.group({
             displayName: ['', [Validators.required]],
             email: ['', [Validators.email, Validators.required]],
-            password: ['', [Validators.minLength(8), Validators.required]]
-        })
+            password: ['', [Validators.minLength(8), Validators.required]],
+            confirmPassword: ['', []]
+            }, { validator: this.checkPasswordsMatch('password', 'confirmPassword') }
+        )
     }
 
     public submitRegister(): void {
@@ -60,6 +62,18 @@ export class RegisterComponent implements OnInit, OnDestroy {
         } else {
             this.alertService.sendAlert('Please enter valid name, email and password.', AlertType.Danger);
         }
+    }
+
+    checkPasswordsMatch(passwordKey: string, passwordConfirmationKey: string) {
+        return (group: FormGroup) => {
+            const passwordInput = group.controls[passwordKey],
+                passwordConfirmationInput = group.controls[passwordConfirmationKey];
+            if (passwordInput.value !== passwordConfirmationInput.value) {
+                return passwordConfirmationInput.setErrors({notEquivalent: true});
+            } else {
+                return passwordConfirmationInput.setErrors(null);
+            }
+        };
     }
 
 }

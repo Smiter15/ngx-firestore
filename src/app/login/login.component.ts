@@ -51,13 +51,6 @@ export class LoginComponent implements OnInit, OnDestroy {
                 }
             })
         );
-
-        this.notesCollection = this.afs.collection('notes', ref => {
-            return ref.orderBy('content'); // can do orderBy + where clause etc
-        }); // reference
-        this.notes = this.notesCollection.valueChanges();  // observable of notes data
-        this.noteDocument = this.afs.doc('notes/UhwETab0FKIu3OdPaZRF');
-        this.note = this.noteDocument.valueChanges();
     }
 
     ngOnDestroy() {
@@ -67,7 +60,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private createForm(): void {
         this.loginForm = this.fb.group({
             email: ['', [Validators.email, Validators.required]],
-            password: ['', [Validators.minLength(8), Validators.required]]
+            password: ['', [Validators.required]]
         })
     }
 
@@ -100,10 +93,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     private afterSignIn() {
         // Do after login stuff here, such router redirects, toast messages, etc.
         return this.router.navigate(['/chat']);
-    }
-
-    updateContent() {
-        this.noteDocument.update({content: this.newContent});
     }
 
 }

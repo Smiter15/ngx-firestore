@@ -1,30 +1,52 @@
-<div class="container-wrapper container d-flex justify-content-center align-items-center">
-    <div class="form-wrapper text-center">
-        <h2 class="text-center">Login</h2>
-        <form [formGroup]="loginForm" (submit)="submitLogin()" novalidate>
-            <div class="form-group">
-                <input type="email" class="form-control" id="email-input" placeholder="Enter email" formControlName="email" />
+<section>
+    <mat-card class="login-container">
+
+        <mat-card-content>
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Login</h2>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input matInput email placeholder="Email" formControlName="email" required>
+                            <mat-error *ngIf="loginForm.get('email').hasError('email') && !loginForm.get('email').hasError('required')">
+                                Please enter a valid email address
+                            </mat-error>
+                            <mat-error *ngIf="loginForm.get('email').hasError('required')">
+                                Email is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input matInput type="password" placeholder="Password" formControlName="password" required>
+                            <mat-error *ngIf="loginForm.get('password').hasError('required')">
+                                Password is required
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-card-actions class="text-center">
+                    <button mat-raised-button [disabled]="loginForm.status !== 'VALID'" (click)="submitLogin()" color="primary">Sign in</button>
+                </mat-card-actions>
+            </form>
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center">
+                        <small><a routerLink="/register">Need an account?</a></small>
+                    </div>
+                    <hr />
+                    <div class="text-center">
+                        <button mat-raised-button (click)="signInWithFacebook()" class="btn-facebook">
+                            <i class="fa fa-facebook fa-lg"></i> Sign in with Facebook
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control" id="password-input" placeholder="Enter password" formControlName="password" />
-            </div>
-            <button type="button" mat-raised-button (click)="submitLogin()" color="primary">Submit</button>
-        </form>
-        <small><a routerLink="/register">Need an account?</a></small>
-        <hr />
-        <button (click)="signInWithFacebook()" class="btn btn-facebook">
-            <i class="fa fa-facebook fa-lg"></i> Login with Facebook
-        </button>
-    </div>
-</div>
+        </mat-card-content>
 
-<h1>Notes</h1>
-
-<div *ngFor="let note of notes | async">
-    <h3>{{note.content}}</h3>
-</div>
-
-<h3>{{note | async | json}}</h3>
-
-<input [(ngModel)]="newContent" />
-<button (click)="updateContent()">Update</button>
+    </mat-card>
+</section>

@@ -1,23 +1,49 @@
 @import '../../styles/variables';
 
-h2 {
-    color: $secondary;
-    margin-bottom: 1em;
+.mat-card {
+    background: #eaeaea;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
 }
 
-.form-wrapper {
-    min-width: 40%;
-    margin-bottom: 10%;
-    border: 2px solid $light-grey;
-    padding: 1em 2em;
+.login-container {
+
+    h2 {
+        color: $grey;
+    }
+
+    p {
+        font-size: 22px;
+        margin-bottom: 30px;
+        color: white;
+        font-weight: 400;
+    }
+
+    form {
+        max-width: 500px;
+        margin: auto;
+        mat-form-field {
+            width: 100%;
+        }
+        button {
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
     .btn-facebook {
         background: #4267b2;
         color: white;
         height: 40px;
         text-align: center;
+        max-width: 300px;
         &:hover {
             cursor: pointer;
             background: #16377b;
         }
     }
+
 }

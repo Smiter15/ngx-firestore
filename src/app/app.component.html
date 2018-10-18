@@ -27,7 +27,7 @@
                     <button
                         *ngIf="auth.currentUser | async"
                         mat-icon-button
-                        [routerLink]="'/chat'"
+                        routerLink="/chat"
                         type="button"
                         class="float-right">
                         <i class="material-icons">chat_bubble</i>
